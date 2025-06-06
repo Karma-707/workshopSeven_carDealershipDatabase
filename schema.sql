@@ -39,7 +39,7 @@ CREATE TABLE `Vehicles` (
 # Add table "Inventory"			                                         #
 # ---------------------------------------------------------------------- #
 
-CREATE TABLE `Inventory ` (
+CREATE TABLE `Inventory` (
     `DealershipID` INTEGER NOT NULL,
     `Vin` VARCHAR(17) NOT NULL,
     CONSTRAINT `PK_Inventory` PRIMARY KEY (`DealershipID`, `Vin`),
@@ -70,9 +70,10 @@ CREATE TABLE `LeaseContracts` (
     `Vin` VARCHAR(17) NOT NULL,
     `LeaseName` VARCHAR(50) NOT NULL,
     `LeaseStart` DATE NOT NULL,
-    `LeaseEND` DATE NOT NULL,
+    `LeaseEnd` DATE NOT NULL,
     `MonthlyPayment` DECIMAL(10,2) NOT NULL,
-    CONSTRAINT `FK_SalesContracts_Vehicles` FOREIGN KEY (Vin) REFERENCES Vehicles(Vin)
+    CONSTRAINT `PK_LeaseContracts` PRIMARY KEY (`ContractID`),
+    CONSTRAINT `FK_LeaseContracts_Vehicles` FOREIGN KEY (Vin) REFERENCES Vehicles(Vin)
 );
 
 
